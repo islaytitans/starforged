@@ -1,9 +1,11 @@
 import { FC, Fragment } from "react";
+import Header from "../global/Header";
 
 const Layout: FC = ({ children }) => {
   return (
     <Fragment>
-      <main className="mx-auto max-w-full">{children}</main>
+      <Header />
+      <main className="mx-auto max-w-full font-mono">{children}</main>
     </Fragment>
   );
 };
