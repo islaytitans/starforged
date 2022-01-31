@@ -4,7 +4,7 @@ import { SectorContext } from "../../context/SectorContext";
 import Region from "../../types/Region";
 
 const Region = () => {
-  const Settlement = useContext(SectorContext);
+  const Sector = useContext(SectorContext);
 
   const regions: Array<Region> = [
     {
@@ -43,19 +43,19 @@ const Region = () => {
 
     const chosenRegion = regions.find((r) => r.id === regionId);
     if (chosenRegion !== undefined) {
-      Settlement.updateRegion(chosenRegion);
+      Sector.updateRegion(chosenRegion);
     }
   };
 
   const clearRegion = (e: MouseEvent<HTMLButtonElement>) => {
-    Settlement.updateRegion(null);
+    Sector.updateRegion(null);
   };
 
   return (
     <section>
       <div className="flex justify-center">
         <div className="w-1/2 rounded-lg bg-white shadow-xl">
-          {!Settlement.region && (
+          {!Sector.region && (
             <ul className="divide-y divide-gray-300">
               <li className="bg-gray-200 p-4" data-id="-1">
                 Choose your starting region
@@ -72,9 +72,9 @@ const Region = () => {
               ))}
             </ul>
           )}
-          {Settlement.region && (
+          {Sector.region && (
             <button className="p-4 hover:bg-gray-50" onClick={clearRegion}>
-              {Settlement.region?.name}
+              {Sector.region?.name}
             </button>
           )}
         </div>

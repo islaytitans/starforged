@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import Region from "../types/Region";
-import Settlement from "../types/Settlement";
+import Sector from "../types/Sector";
 
 export const defaultSectorState = {
   region: null,
@@ -9,4 +9,4 @@ export const defaultSectorState = {
   updateSettlementCount: (count: number) => console.log(count),
 };
 
-export const SectorContext = createContext<Settlement>(defaultSectorState);
+export const SectorContext = createContext<Sector>(defaultSectorState);

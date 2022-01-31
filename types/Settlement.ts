@@ -1,10 +1,9 @@
-import Region from "./Region";
-
 interface Settlement {
-  region: Region | null;
-  updateRegion: (region: Region | null) => void;
-  settlementCount: number | null;
-  updateSettlementCount: (count: number) => void;
+  name: string;
+  location: string;
+  population: Population;
+  authority: Authority;
+  projects: Array<string>;
 }
 
 export default Settlement;
