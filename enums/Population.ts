@@ -5,3 +5,5 @@ enum Population {
   Thousands,
   TensThousands,
 }
+
+export default Population;

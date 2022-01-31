@@ -7,3 +7,5 @@ enum Authority {
   Corrupt,
   Oppressive,
 }
+
+export default Authority;
