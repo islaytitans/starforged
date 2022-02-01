@@ -1,11 +1,11 @@
 enum Authority {
-  NoneLawless,
-  Ineffectual,
-  Tolerant,
-  Fair,
-  Unyielding,
-  Corrupt,
-  Oppressive,
+  NoneLawless = "None / Lawless",
+  Ineffectual = "Ineffectual",
+  Tolerant = "Tolerant",
+  Fair = "Fair",
+  Unyielding = "Unyielding",
+  Corrupt = "Corrupt",
+  Oppressive = "Oppressive",
 }
 
 export default Authority;

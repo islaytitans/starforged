@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Region from "../components/sector/Region";
 import SettlementCount from "../components/sector/SettlementCount";
+import SettlementList from "../components/sector/SettlementList";
 
 const Home: NextPage = () => {
   return (
@@ -14,6 +15,7 @@ const Home: NextPage = () => {
       <section className="mx-auto flex max-w-xs flex-col pt-6 md:max-w-md lg:max-w-2xl">
         <Region />
         <SettlementCount />
+        <SettlementList />
       </section>
     </>
   );

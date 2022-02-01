@@ -1,9 +1,9 @@
 enum Population {
-  Few,
-  Dozens,
-  Hundreds,
-  Thousands,
-  TensThousands,
+  Few = "Few",
+  Dozens = "Dozens",
+  Hundreds = "Hundreds",
+  Thousands = "Thousands",
+  TensThousands = "Tens of Thousands",
 }
 
 export default Population;

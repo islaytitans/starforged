@@ -1,11 +1,15 @@
 import { FC, useState } from "react";
 import { SectorContext, defaultSectorState } from "../context/SectorContext";
 import Region from "../types/Region";
+import Settlement from "../types/Settlement";
 
 const SectorProvider: FC = ({ children }) => {
   const [region, setRegion] = useState<Region | null>(defaultSectorState.region);
   const [settlementCount, setSettlementCount] = useState<number | null>(
     defaultSectorState.settlementCount
+  );
+  const [settlements, setSettlements] = useState<Array<Settlement> | null>(
+    defaultSectorState.settlements
   );
 
   const updateRegion = (region: Region | null) => {
@@ -17,6 +21,25 @@ const SectorProvider: FC = ({ children }) => {
 
   const updateSettlementCount = (count: number) => {
     setSettlementCount(count);
+    setSettlements(new Array(count));
+  };
+
+  const updateSettlement = (settlement: Settlement) => {
+    if (settlements === null) {
+      setSettlements([settlement]);
+    } else {
+      deleteSettlement(settlement.id);
+      setSettlements([...settlements, settlement]);
+    }
+  };
+
+  const deleteSettlement = (settlementId: number) => {
+    if (settlements === null) {
+      return;
+    }
+
+    const filteredSettlements = settlements.filter((s) => s.id !== settlementId);
+    setSettlements(filteredSettlements);
   };
 
   return (
@@ -26,6 +49,8 @@ const SectorProvider: FC = ({ children }) => {
         updateRegion: updateRegion,
         settlementCount: settlementCount,
         updateSettlementCount: updateSettlementCount,
+        settlements: settlements,
+        updateSettlement: updateSettlement,
       }}>
       {children}
     </SectorContext.Provider>
