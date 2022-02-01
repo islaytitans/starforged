@@ -12,17 +12,16 @@ const SettlementCount = () => {
   return (
     <>
       {Sector.settlementCount && (
-        <section>
-          <div className="flex justify-center">
-            <div className="w-1/2 rounded-lg bg-white shadow-xl">
-              <input
-                type="number"
-                title="settlementCount"
-                className="p-4"
-                value={Sector.settlementCount ?? 0}
-                onChange={setCount}
-              />
-            </div>
+        <section className="flex justify-center">
+          <label className="w-1/2 bg-gray-200 p-4">Number of settlements</label>
+          <div className="w-1/2 rounded-lg bg-white shadow-xl">
+            <input
+              type="number"
+              title="settlementCount"
+              className="w-full p-4"
+              value={Sector.settlementCount}
+              onChange={setCount}
+            />
           </div>
         </section>
       )}

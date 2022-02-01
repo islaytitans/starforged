@@ -52,32 +52,30 @@ const Region = () => {
   };
 
   return (
-    <section>
-      <div className="flex justify-center">
-        <div className="w-1/2 rounded-lg bg-white shadow-xl">
-          {!Sector.region && (
-            <ul className="divide-y divide-gray-300">
-              <li className="bg-gray-200 p-4" data-id="-1">
-                Choose your starting region
+    <section className="flex justify-center">
+      <div className="w-full rounded-lg bg-white shadow-xl">
+        {!Sector.region && (
+          <ul id="region" className="divide-y divide-gray-300">
+            <li className="bg-gray-200 p-4" data-id="-1">
+              Choose your starting region
+            </li>
+            {regions.map((region: Region) => (
+              <li
+                className="cursor-pointer p-4 hover:bg-gray-50"
+                key={region.id}
+                data-id={region.id}
+                onClick={chooseRegion}>
+                {region.name}
+                <p className="pt-0.5 text-xs">{region.description}</p>
               </li>
-              {regions.map((region: Region) => (
-                <li
-                  className="cursor-pointer p-4 hover:bg-gray-50"
-                  key={region.id}
-                  data-id={region.id}
-                  onClick={chooseRegion}>
-                  {region.name}
-                  <p className="pt-0.5 text-xs">{region.description}</p>
-                </li>
-              ))}
-            </ul>
-          )}
-          {Sector.region && (
-            <button className="p-4 hover:bg-gray-50" onClick={clearRegion}>
-              {Sector.region?.name}
-            </button>
-          )}
-        </div>
+            ))}
+          </ul>
+        )}
+        {Sector.region && (
+          <button className="w-full p-4 hover:bg-gray-50" onClick={clearRegion}>
+            {Sector.region?.name}
+          </button>
+        )}
       </div>
     </section>
   );

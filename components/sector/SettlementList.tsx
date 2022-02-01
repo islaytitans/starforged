@@ -9,15 +9,14 @@ const SettlementList = () => {
   return (
     <>
       {Sector.settlementCount && (
-        <section>
-          <div className="flex justify-center">
-            <div className="w-1/2 rounded-lg bg-white shadow-xl">
-              <ul className="p-4">
-                {Sector.settlements?.map((settlement: Settlement) => (
-                  <SettlementItem key={settlement.id} settlement={settlement} />
-                ))}
-              </ul>
-            </div>
+        <section className="flex flex-col justify-center">
+          <label className="bg-gray-200 p-4">Settlements</label>
+          <div className="w-full rounded-lg bg-white shadow-xl">
+            <ul className="p-4">
+              {Sector.settlements?.map((settlement: Settlement) => (
+                <SettlementItem key={settlement.id} settlement={settlement} />
+              ))}
+            </ul>
           </div>
         </section>
       )}

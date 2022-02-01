@@ -8,19 +8,21 @@ const SectorProvider: FC = ({ children }) => {
   const [settlementCount, setSettlementCount] = useState<number | null>(
     defaultSectorState.settlementCount
   );
+  const [settlementCountChanged, setSettlementCountChanged] = useState<boolean>(false);
   const [settlements, setSettlements] = useState<Array<Settlement> | null>(
     defaultSectorState.settlements
   );
 
   const updateRegion = (region: Region | null) => {
     setRegion(region);
-    if (settlementCount === null && region !== null) {
+    if (region !== null && !settlementCountChanged) {
       setSettlementCount(region.suggestedSettlementCount);
     }
   };
 
   const updateSettlementCount = (count: number) => {
     setSettlementCount(count);
+    setSettlementCountChanged(true);
     setSettlements(new Array(count));
   };
 
