@@ -8,13 +8,17 @@ const SettlementList = () => {
 
   return (
     <>
-      {Sector.settlementCount && (
+      {Sector.settlements && (
         <section className="flex flex-col justify-center">
           <label className="bg-gray-200 p-4">Settlements</label>
           <div className="w-full rounded-lg bg-white shadow-xl">
             <ul className="p-4">
-              {Sector.settlements?.map((settlement: Settlement) => (
-                <SettlementItem key={settlement.id} settlement={settlement} />
+              {Sector.settlements.map((settlement: Settlement, index: number) => (
+                <SettlementItem
+                  key={settlement.id.toString()}
+                  index={index}
+                  settlement={settlement}
+                />
               ))}
             </ul>
           </div>

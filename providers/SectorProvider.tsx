@@ -1,3 +1,4 @@
+import { Guid } from "guid-typescript";
 import { FC, useState } from "react";
 import { SectorContext, defaultSectorState } from "../context/SectorContext";
 import Region from "../types/Region";
@@ -16,14 +17,32 @@ const SectorProvider: FC = ({ children }) => {
   const updateRegion = (region: Region | null) => {
     setRegion(region);
     if (region !== null && !settlementCountChanged) {
-      setSettlementCount(region.suggestedSettlementCount);
+      updateSettlementCount(region.suggestedSettlementCount, true);
     }
   };
 
-  const updateSettlementCount = (count: number) => {
+  const updateSettlementCount = (count: number, autoChange?: boolean) => {
     setSettlementCount(count);
-    setSettlementCountChanged(true);
-    setSettlements(new Array(count));
+    if (!autoChange) {
+      setSettlementCountChanged(true);
+    }
+    if (count > 0) {
+      if (!settlements || settlements.length < count) {
+        let settle = settlements ?? new Array<Settlement>();
+        while (settle.length < count) {
+          settle.push({ id: Guid.create() });
+        }
+        setSettlements(settle);
+      } else if (settlements.length > count) {
+        let settle = settlements;
+        while (settle.length > count) {
+          settle.pop();
+        }
+        setSettlements(settle);
+      }
+    } else {
+      setSettlements(null);
+    }
   };
 
   const updateSettlement = (settlement: Settlement) => {
@@ -35,7 +54,7 @@ const SectorProvider: FC = ({ children }) => {
     }
   };
 
-  const deleteSettlement = (settlementId: number) => {
+  const deleteSettlement = (settlementId: Guid) => {
     if (settlements === null) {
       return;
     }
